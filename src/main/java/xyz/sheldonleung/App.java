@@ -9,26 +9,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * 程序入口
+ * <p>
+ * Create at 2020/10/31 00:14
+ *
+ * @author Sheldon Leung
+ * @version 0.1
  */
 public class App extends Application {
 
-    private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"));
-        stage.setScene(scene);
+        Parent root = FXMLLoader.load((App.class.getResource("index.fxml")));
+        stage.setScene(new Scene(root, 500, 300));
+        stage.setTitle("Download the damn wallpaper");
         stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
